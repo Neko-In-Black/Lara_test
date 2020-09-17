@@ -4,7 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateFoldersTable extends Migration
+    class CreateFolderBlockTable extends Migration
     {
         /**
          * Run the migrations.
@@ -13,24 +13,21 @@
          */
         public function up()
         {
-            Schema::enableForeignKeyConstraints();
-            Schema::create('folders', function (Blueprint $table) {
+            Schema::create('folder_block', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->charset = 'utf8mb4';
                 $table->collation = 'utf8mb4_unicode_ci';
                 $table->bigIncrements('id');
-                $table->timestamps();
-                $table->bigInteger('archives_id')
-                      ->unsigned();
-                $table->bigInteger('blocks_id')
-                      ->unsigned();
 
-                $table->foreign('archives_id')
-                      ->references('id')
-                      ->on('archives');
+                $table->unsignedBigInteger('blocks_id');
+                $table->unsignedBigInteger('folders_id');
+
                 $table->foreign('blocks_id')
                       ->references('id')
-                      ->on('blocks');
+                      ->on('blocks')->onDelete('cascade');
+                $table->foreign('folders_id')
+                      ->references('id')
+                      ->on('folders')->onDelete('cascade');
             });
         }
 
@@ -41,6 +38,6 @@
          */
         public function down()
         {
-            Schema::dropIfExists('folders');
+            Schema::dropIfExists('folder_block');
         }
     }
