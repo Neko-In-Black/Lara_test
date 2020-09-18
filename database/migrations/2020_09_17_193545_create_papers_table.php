@@ -4,7 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateBlocksTable extends Migration
+    class CreatePapersTable extends Migration
     {
         /**
          * Run the migrations.
@@ -13,18 +13,15 @@
          */
         public function up()
         {
-            Schema::enableForeignKeyConstraints();
-            Schema::create('blocks', function (Blueprint $table) {
-                $table->engine = 'InnoDB';
-                $table->charset = 'utf8mb4';
-                $table->collation = 'utf8mb4_unicode_ci';
+            Schema::create('papers', function (Blueprint $table) {
                 $table->bigIncrements('id');
+                $table->text('content');
+                $table->unsignedBigInteger('folder_id');
                 $table->timestamps();
-                $table->unsignedBigInteger('archive_id');
 
-                $table->foreign('archive_id')
+                $table->foreign('folder_id')
                       ->references('id')
-                      ->on('archives')
+                      ->on('folders')
                       ->onDelete('cascade');
             });
         }
@@ -36,6 +33,6 @@
          */
         public function down()
         {
-            Schema::dropIfExists('blocks');
+            Schema::dropIfExists('papers');
         }
     }

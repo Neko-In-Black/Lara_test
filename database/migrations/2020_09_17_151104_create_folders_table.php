@@ -18,10 +18,10 @@
                 $table->charset = 'utf8mb4';
                 $table->collation = 'utf8mb4_unicode_ci';
                 $table->bigIncrements('id');
-                $table->unsignedBigInteger('blocks_id');
+                $table->unsignedBigInteger('block_id');
                 $table->timestamps();
 
-                $table->foreign('blocks_id')
+                $table->foreign('block_id')
                       ->references('id')
                       ->on('blocks')
                       ->onDelete('cascade');

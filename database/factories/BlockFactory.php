@@ -10,8 +10,8 @@
 
     $factory->define(Block::class, function (Faker $faker) {
         return [
-            'archives_id' => function () {
-                return factory(Archive::class)->create()->id;
-            },
+//            'archives_id' => function () {
+//                return factory(Archive::class)->create()->id;
+//            },
         ];
     });
