@@ -10,6 +10,14 @@
 
         public function archive()
         {
-            return $this->hasOne(Archive::class);
+            return $this->belongsTo(Archive::class);
         }
+
+        public function folders() {
+            return $this->hasmany(Folder::class);
+        }
+        public function papers() {
+            return $this->hasmany(Papers::class);
+        }
+
     }

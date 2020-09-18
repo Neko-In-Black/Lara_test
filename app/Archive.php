@@ -12,4 +12,16 @@
         {
             return $this->hasMany(Block::class);
         }
+
+        public function folders()
+        {
+            return $this->hasMany(Folder::class);
+        }
+
+        public function papers()
+        {
+            return $this->hasMany(Papers::class);
+        }
+
+
     }

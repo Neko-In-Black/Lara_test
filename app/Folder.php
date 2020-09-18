@@ -10,6 +10,11 @@
 
         public function block()
         {
-            return $this->hasOne(Block::class);
+            return $this->belongsTo(Block::class);
+        }
+
+        public function papers()
+        {
+            return $this->hasMany(Papers::class);
         }
     }

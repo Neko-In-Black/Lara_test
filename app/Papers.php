@@ -10,6 +10,16 @@
 
         public function folder()
         {
-            return $this->hasOne(Folder::class);
+            return $this->belongsTo(Folder::class);
+        }
+
+        public function block()
+        {
+            return $this->belongsTo(Block::class);
+        }
+
+        public function archive()
+        {
+            return $this->belongsTo(Archive::class);
         }
     }

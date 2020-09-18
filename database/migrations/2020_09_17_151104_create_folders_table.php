@@ -19,11 +19,16 @@
                 $table->collation = 'utf8mb4_unicode_ci';
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('block_id');
+                $table->unsignedBigInteger('archive_id');
                 $table->timestamps();
 
                 $table->foreign('block_id')
                       ->references('id')
                       ->on('blocks')
+                      ->onDelete('cascade');
+                $table->foreign('archive_id')
+                      ->references('id')
+                      ->on('archives')
                       ->onDelete('cascade');
             });
         }
