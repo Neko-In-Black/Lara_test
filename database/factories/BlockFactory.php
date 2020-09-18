@@ -2,13 +2,16 @@
 
     /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-    use App\Block;
+    use App\{
+        Archive,
+        Block
+    };
     use Faker\Generator as Faker;
 
     $factory->define(Block::class, function (Faker $faker) {
         return [
             'archives_id' => function () {
-                return factory(App\Archive::class)->create()->id;
+                return factory(Archive::class)->create()->id;
             },
         ];
     });

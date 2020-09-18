@@ -3,7 +3,8 @@
     use App\{
         Archive,
         Block,
-        Folder
+        Folder,
+        Papers
     };
     use Illuminate\Database\Seeder;
 
@@ -17,11 +18,12 @@
         public function run()
         {
             // $this->call(UsersTableSeeder::class);
-            factory(Archive::class, 4)->create();
-            factory(Block::class, 15)->create();
-            factory(Folder::class, 15)->create();
-            $this->call([
-                FolderBlockSeeder::class,
-            ]);
+            factory(Archive::class, 10)->create();
+            factory(Block::class, 30)->create();
+            factory(Folder::class, 100)->create();
+            factory(Papers::class, 120)->create();
+//            $this->call([
+//                FolderBlockSeeder::class,
+//            ]);
         }
     }

@@ -2,11 +2,16 @@
 
     /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-    use App\Folder;
+    use App\{
+        Block,
+        Folder
+    };
     use Faker\Generator as Faker;
 
     $factory->define(Folder::class, function (Faker $faker) {
         return [
-            'content' => $faker->realText(rand(20, 60))
+            'blocks_id' => function () {
+                return factory(Block::class)->create()->id;
+            },
         ];
     });

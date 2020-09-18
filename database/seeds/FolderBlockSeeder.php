@@ -19,7 +19,7 @@
                              ->toArray();
 
             $data = [];
-            for ($i = 0; $i < 20; $i++) {
+            for ($i = 0; $i < 100; $i++) {
                 $arr['folders_id'] = Arr::random($folderIds);
                 $arr['blocks_id'] = Arr::random($blockIds);
                 $data[] = $arr;
